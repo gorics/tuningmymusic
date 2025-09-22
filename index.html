@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https://i.scdn.co https://i.ytimg.com; script-src 'self'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://accounts.spotify.com https://api.spotify.com https://accounts.google.com https://oauth2.googleapis.com https://www.googleapis.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="ListBridge – Spotify에서 YouTube로 플레이리스트를 안전하게 옮기는 100% 정적 웹앱" />
+    <title>ListBridge</title>
+    <link rel="stylesheet" href="./assets/styles/global.css" />
+    <link rel="stylesheet" href="./assets/styles/components.css" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="./assets/icons/listbridge.svg" />
+  </head>
+  <body>
+    <noscript>
+      <p>
+        ListBridge는 JavaScript 기반으로 동작합니다. 브라우저에서 JavaScript를 활성화한 뒤
+        다시 방문해 주세요.
+      </p>
+    </noscript>
+    <header class="lb-app-header" role="banner">
+      <div class="lb-logo" aria-label="ListBridge logo" tabindex="0">
+        <svg viewBox="0 0 120 32" aria-hidden="true" focusable="false">
+          <rect x="0" y="8" width="28" height="16" rx="8" class="lb-logo-pill"></rect>
+          <rect x="12" y="4" width="16" height="24" rx="8" class="lb-logo-pill"></rect>
+          <text x="44" y="21" class="lb-logo-text">ListBridge</text>
+        </svg>
+      </div>
+      <nav class="lb-nav" aria-label="Primary">
+        <a href="#/" data-route>Welcome</a>
+        <a href="#/connect" data-route>Connect</a>
+        <a href="#/select" data-route>Select</a>
+        <a href="#/map" data-route>Match</a>
+        <a href="#/transfer" data-route>Transfer</a>
+        <a href="#/report" data-route>Report</a>
+      </nav>
+      <button id="theme-toggle" aria-label="Toggle color scheme"></button>
+    </header>
+    <main id="app" class="lb-app" role="main" tabindex="-1"></main>
+    <footer class="lb-footer" role="contentinfo">
+      <small>
+        © <span data-bind="year"></span> ListBridge. Spotify 또는 Google과 제휴하지 않았습니다.
+      </small>
+      <a href="./docs/README.md" target="_blank" rel="noopener">문서 보기</a>
+    </footer>
+    <template id="sr-live-region">
+      <div class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    </template>
+    <script type="module" src="./src/app.js"></script>
+  </body>
+</html>
