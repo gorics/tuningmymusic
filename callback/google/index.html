@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Google OAuth Redirect · ListBridge</title>
+    <meta http-equiv="refresh" content="0;url=../index.html#callback/google" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        background: #0b0f19;
+        color: #f8fafc;
+        margin: 0;
+      }
+      main {
+        text-align: center;
+        max-width: 32rem;
+        padding: 2rem;
+      }
+    </style>
+    <script>
+      (function redirect() {
+        const query = window.location.search;
+        const hash = query ? `#callback/google?${query.slice(1)}` : "#callback/google";
+        const target = `../index.html${hash}`;
+        if (window.location.replace) {
+          window.location.replace(target);
+        } else {
+          window.location.href = target;
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <main>
+      <h1>Redirecting back to ListBridge…</h1>
+      <p>If the page does not change, <a href="../index.html#callback/google">continue to the app</a>.</p>
+    </main>
+  </body>
+</html>
