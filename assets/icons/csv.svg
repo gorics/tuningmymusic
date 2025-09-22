@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">CSV file icon</title>
+  <rect x="8" y="4" width="40" height="56" rx="6" fill="#0f172a" />
+  <path d="M48 20L36 8v8a4 4 0 004 4z" fill="#1db954" />
+  <path d="M20 28h24M20 36h24M20 44h24" stroke="#1db954" stroke-width="3" stroke-linecap="round" />
+  <text x="12" y="56" fill="#1db954" font-family="'Space Grotesk', sans-serif" font-size="10" font-weight="600">CSV</text>
+</svg>

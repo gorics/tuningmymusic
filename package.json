@@ -1,0 +1,14 @@
+{
+  "name": "listbridge",
+  "version": "1.0.0",
+  "description": "ListBridge – static playlist transfer webapp for Spotify and YouTube",
+  "type": "module",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "test": "node test/mapping.test.js",
+    "check": "npm run test"
+  },
+  "keywords": ["spotify", "youtube", "playlist", "transfer", "static", "pkce"],
+  "author": "ListBridge Contributors",
+  "license": "MIT"
+}

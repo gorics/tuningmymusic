@@ -1,0 +1,33 @@
+{
+  "source": "spotify",
+  "fetchedAt": "2024-01-01T00:00:00.000Z",
+  "appVersion": "1.0.0",
+  "playlists": [
+    {
+      "id": "demo-1",
+      "name": "ListBridge Demo",
+      "description": "A short playlist used for demo purposes.",
+      "trackCount": 2,
+      "tracks": [
+        {
+          "title": "Synth Waves",
+          "artists": ["Analog Horizon"],
+          "album": "Night Runners",
+          "duration_ms": 215000,
+          "release_year": 2021,
+          "explicit": false,
+          "sourceIds": { "spotify": "3demo1" }
+        },
+        {
+          "title": "City Lights",
+          "artists": ["Dreamstatic", "Feather"],
+          "album": "Skyline",
+          "duration_ms": 198000,
+          "release_year": 2020,
+          "explicit": false,
+          "sourceIds": { "spotify": "3demo2" }
+        }
+      ]
+    }
+  ]
+}
