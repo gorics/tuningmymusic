@@ -1,0 +1,16 @@
+{
+  "name": "ListBridge",
+  "short_name": "ListBridge",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#121212",
+  "theme_color": "#1db954",
+  "description": "Transfer playlists between Spotify and YouTube safely in the browser.",
+  "icons": [
+    {
+      "src": "./assets/icons/listbridge.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
