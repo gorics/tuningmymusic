@@ -19,7 +19,7 @@ The YouTube Data API v3 supports OAuth 2.0 PKCE. Configure a client for ListBrid
      - Local dev: `http://localhost:4173/callback/google`
      - GitHub Pages: `https://<username>.github.io/<repo>/callback/google`
    - Click **Create** and copy the *Client ID* (no secret required for PKCE).
-   - Open the ListBridge app, go to **Connect**, paste the ID into the Google field, and click **Save**. The value stays in that browser (optionally encrypted).
+   - Edit `oauth.config.js` and replace the Google `clientId` placeholder with the copied value. Save/commit before deploying so the static site serves the updated config.
 
 4. **Configure scopes**
    - ListBridge requests `https://www.googleapis.com/auth/youtube` (full playlist access).
@@ -36,7 +36,7 @@ The YouTube Data API v3 supports OAuth 2.0 PKCE. Configure a client for ListBrid
 
 6. **Testing checklist**
    - [ ] OAuth consent screen published (or test users added).
-   - [ ] Google Client ID saved through the Connect form.
+- [ ] Google Client ID defined in `oauth.config.js` and showing as “Configured” on **Connect**.
    - [ ] Authorization prompt shows requested scopes.
    - [ ] After approval, app navigates back to `#/connect` and shows Google connected.
    - [ ] Network tab confirms tokens exchanged via `https://oauth2.googleapis.com/token`.

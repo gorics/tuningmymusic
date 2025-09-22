@@ -104,7 +104,7 @@ function registerRoutes() {
 
     const introBody = document.createElement("p");
     introBody.textContent =
-      "ListBridge opens the official Spotify and Google authorization dialogs. Paste your client IDs below—they stay in this browser.";
+      "ListBridge opens the official Spotify and Google authorization dialogs. Update oauth.config.js with your client IDs so the pop-ups can launch immediately.";
 
     const statusList = document.createElement("ul");
     statusList.className = "lb-status-list";
@@ -129,21 +129,17 @@ function registerRoutes() {
 
     introCard.append(introTitle, introBody, statusList, redirectLabel, redirectContainer, docsHint);
 
-    const credentialsForm = document.createElement("form");
-    credentialsForm.setAttribute("data-card", "");
-    credentialsForm.innerHTML = `
-      <h2>Client IDs</h2>
-      <p>Paste the client IDs from Spotify and Google. They are stored locally and power the login pop-ups.</p>
-      <label>Spotify Client ID <input type="text" name="spotifyClientId" autocomplete="off" spellcheck="false" inputmode="text" /></label>
-      <label>Google Client ID <input type="text" name="googleClientId" autocomplete="off" spellcheck="false" inputmode="text" /></label>
-      <div class="lb-button-row">
-        <button type="submit">Save IDs</button>
-        <button type="button" class="lb-button-secondary" data-action="clear-client-ids">Clear</button>
-      </div>
-      <p class="lb-card-hint">Values never leave your device. Enable encrypted storage below to keep them for future sessions.</p>
+    const configCard = document.createElement("div");
+    configCard.setAttribute("data-card", "");
+    configCard.innerHTML = `
+      <h2>Configure OAuth client IDs</h2>
+      <p>Edit <code>oauth.config.js</code> in the project root and set your Spotify and Google client IDs before deploying. The file loads before the app so the sign-in buttons know which application to launch.</p>
+      <pre><code>window.OAUTH_CONFIG = {
+  spotify: { clientId: "YOUR_SPOTIFY_CLIENT_ID" },
+  google: { clientId: "YOUR_GOOGLE_CLIENT_ID" }
+};</code></pre>
+      <p class="lb-card-hint">Client IDs are public identifiers—never add client secrets.</p>
     `;
-
-    setTimeout(() => attachClientIdFormListeners(credentialsForm), 0);
 
     const spotifyCard = ProviderConnectCard({
       provider: "spotify",
@@ -180,13 +176,13 @@ function registerRoutes() {
 
     setTimeout(() => attachPersistenceListeners(persistenceForm), 0);
 
-    container.append(introCard, credentialsForm, spotifyCard, googleCard, persistenceForm);
+    container.append(introCard, configCard, spotifyCard, googleCard, persistenceForm);
     return container;
 
     function createStatusItem(label, clientId) {
       const item = document.createElement("li");
       if (!clientId) {
-        item.textContent = `${label}: Not configured`;
+        item.textContent = `${label}: Not configured (edit oauth.config.js)`;
       } else {
         const trimmed = String(clientId).trim();
         const masked = trimmed.length > 8 ? `…${trimmed.slice(-6)}` : trimmed;
@@ -195,43 +191,6 @@ function registerRoutes() {
       return item;
     }
 
-    function attachClientIdFormListeners(form) {
-      const spotifyInput = form.querySelector('input[name="spotifyClientId"]');
-      const googleInput = form.querySelector('input[name="googleClientId"]');
-      if (!spotifyInput || !googleInput) return;
-      const ids = getState().settings?.oauthClientIds ?? { spotify: "", google: "" };
-      spotifyInput.value = ids.spotify ?? "";
-      googleInput.value = ids.google ?? "";
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        updateState({
-          settings: {
-            oauthClientIds: {
-              spotify: spotifyInput.value.trim(),
-              google: googleInput.value.trim(),
-            },
-          },
-        });
-        announce("OAuth client IDs saved. You're ready to launch the login pop-ups.");
-      });
-      const clearBtn = form.querySelector('[data-action="clear-client-ids"]');
-      if (clearBtn instanceof HTMLButtonElement) {
-        clearBtn.addEventListener("click", (event) => {
-          event.preventDefault();
-          spotifyInput.value = "";
-          googleInput.value = "";
-          updateState({
-            settings: {
-              oauthClientIds: {
-                spotify: "",
-                google: "",
-              },
-            },
-          });
-          announce("OAuth client IDs cleared.");
-        });
-      }
-    }
   });
 
   registerRoute("/select", () => {

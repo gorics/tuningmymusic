@@ -9,8 +9,8 @@ These end-to-end flows can be performed entirely in a local browser without serv
 
 2. **OAuth configuration**
    - Open `/docs/OAUTH_SETUP_SPOTIFY.md` and `/docs/OAUTH_SETUP_GOOGLE.md` to create client IDs.
-   - On **Connect**, paste the Spotify/Google client IDs into the credentials form and click **Save**.
-   - Confirm the Spotify/Google buttons are enabled. Click each to complete the PKCE flow.
+   - Edit `oauth.config.js`, replace the Spotify/Google client IDs, and reload the app.
+   - On **Connect**, confirm both providers show “Configured” and the buttons are enabled. Click each to complete the PKCE flow.
 
 3. **Playlist import/export**
    - On **Select**, click *Load Spotify playlists*. A list of playlists should appear.

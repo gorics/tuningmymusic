@@ -1,7 +1,8 @@
-import { getState } from "./state.js";
-
-const origin = window.location.origin;
-const basePath = window.location.pathname.replace(/index\.html?$/, "");
+const origin = typeof window !== "undefined" ? window.location.origin : "";
+const basePath =
+  typeof window !== "undefined"
+    ? window.location.pathname.replace(/index\.html?$/, "")
+    : "/";
 
 const baseConfig = {
   appVersion: "1.0.0",
@@ -22,12 +23,18 @@ const baseConfig = {
   },
 };
 
+const runtimeConfig = typeof globalThis !== "undefined" && globalThis.OAUTH_CONFIG
+  ? globalThis.OAUTH_CONFIG
+  : {};
+
 export function getConfig() {
-  const state = getState();
-  const clientIds = state.settings?.oauthClientIds ?? { spotify: "", google: "" };
+  const spotifyOverrides = runtimeConfig.spotify ?? {};
+  const googleOverrides = runtimeConfig.google ?? {};
+  const appOverrides = runtimeConfig.app ?? {};
   return {
     ...baseConfig,
-    spotify: { ...baseConfig.spotify, clientId: clientIds.spotify ?? "" },
-    google: { ...baseConfig.google, clientId: clientIds.google ?? "" },
+    ...appOverrides,
+    spotify: { ...baseConfig.spotify, ...spotifyOverrides },
+    google: { ...baseConfig.google, ...googleOverrides },
   };
 }

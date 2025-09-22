@@ -13,7 +13,7 @@ ListBridge is a security-focused, fully static single-page web application that 
 - ✅ Resume support using encrypted storage (optional).
 - ✅ Responsive, accessible UI with dark mode, keyboard navigation, and i18n (ko/en).
 - ✅ 100% static deployable bundle (HTML/CSS/JS) – no build step required.
-- ✅ OAuth client IDs captured on the Connect screen and stored locally so sign-in buttons immediately launch the official pop-ups.
+- ✅ OAuth client IDs loaded from `oauth.config.js` so sign-in buttons immediately launch the official pop-ups.
 
 ## Quick start
 
@@ -24,8 +24,8 @@ ListBridge is a security-focused, fully static single-page web application that 
    # or: python3 -m http.server 4173
    ```
 2. Follow the OAuth setup guides in `docs/OAUTH_SETUP_SPOTIFY.md` and `docs/OAUTH_SETUP_GOOGLE.md` to create client IDs and register redirect URIs.
-3. Open the app (default `http://localhost:4173`) and navigate to **Connect**. Paste your Spotify and Google client IDs into the credentials form and click **Save**—the values stay in the current browser (or encrypted local storage if you enable it).
-4. Use the **Connect** cards to authorize Spotify and Google. The login pop-ups follow the official OAuth 2.1 PKCE sequence using the IDs you just stored.
+3. Edit `oauth.config.js` in the project root and replace the placeholder Spotify/Google client IDs with your own (no secrets required).
+4. Open the app (default `http://localhost:4173`), navigate to **Connect**, confirm both providers show “Configured”, and use the **Connect** cards to authorize. The login pop-ups use the IDs defined in `oauth.config.js`.
 5. Import playlists (Spotify/JSON/CSV) on **Select** and preview tracks.
 6. Run **Match** to auto-map tracks, then manually review any remaining items.
 7. Start **Transfer** to create playlists on YouTube, monitor quota and progress, and download the final report.
@@ -83,7 +83,7 @@ data/                   # Sample CSV/JSON files for demo
 
 - Provider template (`src/providers/_template.js`) documents the minimal interface to integrate new services (e.g., Apple Music via server-signed tokens).
 - Mapping rules (`src/mapping/rules.js`) include stopwords, version tags, and scoring thresholds that can be extended per locale.
-- Client IDs are stored via the Connect form, while tokens/preferences stay in the browser (session or encrypted local storage).
+- Client IDs live in `oauth.config.js`, while tokens/preferences stay in the browser (session or encrypted local storage).
 
 ## Known limitations
 

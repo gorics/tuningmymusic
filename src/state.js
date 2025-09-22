@@ -12,10 +12,6 @@ const defaultState = Object.freeze({
   settings: {
     persistence: "session",
     rememberTokens: false,
-    oauthClientIds: {
-      spotify: "",
-      google: "",
-    },
   },
   tokens: {
     spotify: null,

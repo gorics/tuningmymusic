@@ -16,7 +16,7 @@ ListBridge uses Spotify's PKCE-based Authorization Code flow. Follow these steps
 
 3. **Client information**
    - Copy the **Client ID**. No client secret is required.
-   - Open the ListBridge app (local or deployed), go to **Connect**, and paste the ID into the Spotify field of the credentials form. Click **Save**—the value stays in that browser.
+   - Edit `oauth.config.js` and replace the Spotify `clientId` placeholder with the copied value. Save the file (and commit if deploying to GitHub Pages).
 
 4. **Scopes required**
    - `playlist-read-private`
@@ -26,7 +26,7 @@ ListBridge uses Spotify's PKCE-based Authorization Code flow. Follow these steps
 
 5. **Testing checklist**
    - [ ] Redirect URI saved.
-   - [ ] Spotify Client ID saved through the Connect form.
+- [ ] Spotify Client ID defined in `oauth.config.js` and showing as “Configured” on **Connect**.
    - [ ] Authorization dialog displays ListBridge app name.
    - [ ] After consent, the app returns to `#/connect` and shows “Connected”.
    - [ ] `sessionStorage` contains `listbridge.tokens.v1` with Spotify token (inspect via DevTools).
