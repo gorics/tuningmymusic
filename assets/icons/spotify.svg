@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Spotify abstract icon</title>
+  <circle cx="32" cy="32" r="30" fill="#121212" />
+  <path
+    d="M18 24c9-2.5 21.5-0.7 29 3.5"
+    stroke="#1db954"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+  <path
+    d="M20 33c6.5-1.8 15.6-0.5 21 2.5"
+    stroke="#1db954"
+    stroke-width="3.2"
+    stroke-linecap="round"
+    opacity="0.9"
+  />
+  <path
+    d="M22 41.5c4.4-1.2 10.4-0.4 14 1.6"
+    stroke="#1db954"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity="0.7"
+  />
+</svg>
