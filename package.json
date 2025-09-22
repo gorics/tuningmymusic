@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "python3 -m http.server 4173",
+    "lint": "node ./scripts/lint.mjs",
     "test": "node test/mapping.test.js",
-    "check": "npm run test"
+    "build": "node ./scripts/build.mjs",
+    "check": "npm run lint && npm test"
   },
   "keywords": ["spotify", "youtube", "playlist", "transfer", "static", "pkce"],
   "author": "ListBridge Contributors",

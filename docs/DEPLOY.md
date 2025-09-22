@@ -33,6 +33,7 @@ ListBridge is designed for zero-backend static hosting. These steps publish the 
    - After deployment, open the site, navigate to **Connect**, and confirm each provider shows “Configured” before attempting sign-in.
 
 6. **Testing**
+   - Run `npm run lint`, `npm test`, and optionally `npm run build` to ensure quality gates pass locally.
    - Run through the flows in `test/e2e.md`.
    - Validate CSP headers by checking the browser console for blocked requests (should be none beyond APIs).
 
@@ -41,7 +42,7 @@ ListBridge is designed for zero-backend static hosting. These steps publish the 
    2. ✅ GitHub Pages enabled on `main`.
    3. ✅ CNAME (optional) committed for custom domain.
    4. ✅ Spotify & Google apps configured with Pages redirect URIs.
-5. ✅ Spotify/Google client IDs set in `oauth.config.js` and verified on the **Connect** screen.
+   5. ✅ Spotify/Google client IDs set in `oauth.config.js` and verified on the **Connect** screen.
    6. ✅ OAuth consent screens published (Google requires production publishing for external use).
    7. ✅ App loads via HTTPS and passes manual tests.
 

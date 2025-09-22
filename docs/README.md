@@ -23,6 +23,12 @@ ListBridge is a security-focused, fully static single-page web application that 
    npm run dev
    # or: python3 -m http.server 4173
    ```
+   - Optional quality checks before committing:
+     ```bash
+     npm run lint
+     npm test
+     npm run build
+     ```
 2. Follow the OAuth setup guides in `docs/OAUTH_SETUP_SPOTIFY.md` and `docs/OAUTH_SETUP_GOOGLE.md` to create client IDs and register redirect URIs.
 3. Edit `oauth.config.js` in the project root and replace the placeholder Spotify/Google client IDs with your own (no secrets required).
 4. Open the app (default `http://localhost:4173`), navigate to **Connect**, confirm both providers show “Configured”, and use the **Connect** cards to authorize. The login pop-ups use the IDs defined in `oauth.config.js`.
@@ -75,7 +81,9 @@ data/                   # Sample CSV/JSON files for demo
 
 ## Testing & quality
 
-- Unit tests: `npm test` runs `test/mapping.test.js` (Node, ES modules).
+- `npm run lint` performs Node syntax validation across JavaScript sources.
+- `npm test` runs `test/mapping.test.js` (Node, ES modules).
+- `npm run build` creates a distributable `dist/` folder that you can deploy as-is.
 - Manual E2E: `test/e2e.md` enumerates end-to-end scenarios.
 - Lighthouse guidance: aim for 90+ Performance/Accessibility/Best Practices/SEO.
 
